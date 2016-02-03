@@ -5,9 +5,13 @@
     "laravel-elixir-livereload": "^1.1.4"
   },
   "dependencies": {
+    "babel-plugin-transform-object-rest-spread": "^6.3.13",
     "bootstrap-sass": "^3.0.0",
+    "fixed-data-table": "^0.6.0",
     "laravel-elixir": "^4.0.0",
-    "react": "^0.14.6",
+    "react": "^0.14.7",
+    "react-avatar-editor": "^3.2.0",
+    "react-bootstrap": "^0.28.2",
     "react-dom": "^0.14.6",
     "react-dropzone-es6": "^1.0.2"
   }

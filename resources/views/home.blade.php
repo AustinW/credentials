@@ -10,6 +10,8 @@
     <!-- Optional theme -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
     
+    <link rel="stylesheet" href="/css/fixed-data-table.css">
+    
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="/css/app.css">
     
@@ -104,34 +106,8 @@
             <div id="step-1-sub1" class="subgroup">
               <h4>Choose size:</h4>
               <div class="row">
-                <div class="col-md-12">
-                  <ul class="list-inline">
-                    
-                    <li>
-                      <div class="thumbnail">
-                        <img src="https://www.perforatedpaper.com/images/products/thumbs/301_sml-01.png">
-                        <div class="caption">
-                          <h3>2 cols x 2 rows</h3>
-                          <p>8.5" x 11"</p>
-                          <p><a href="#" class="btn btn-primary" role="button">Choose</a></p>
-                        </div>
-                      </div>
-                    </li>
-                    
-                    
-                    <li>
-                      <div class="thumbnail">
-                        <img src="https://www.perforatedpaper.com/images/products/thumbs/303_sml-01.png">
-                        <div class="caption">
-                          <h3>2 cols x 3 rows</h3>
-                          <p>8.5" x 11"</p>
-                          <p><a href="#" class="btn btn-primary" role="button">Choose</a></p>
-                        </div>
-                      </div>
-                    </li>
-                    
-                    
-                  </ul>
+                <div class="col-md-12" id="dimension-chooser">
+                  
                 </div>
               </div>
             </div>
