@@ -5,3 +5,5 @@ const LinkCell = (rowIndex, data, col, ...props) => (
     <a href="#">{data.getObjectAt(rowIndex)[col]}</a>
   </Cell>
 );
+
+export default LinkCell;

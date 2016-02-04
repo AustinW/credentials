@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 import Roster from './app/components/Roster/Roster.jsx';
+import DimensionChooser from './app/components/Dimensions/DimensionChooser.jsx';
 import CREDENTIALS from './app/data/credentials';
 
 

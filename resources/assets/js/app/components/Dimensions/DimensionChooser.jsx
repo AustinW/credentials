@@ -1,5 +1,6 @@
 import React from 'react';
 
+import AVAILABLE_DIMENSIONS from '../../../config.js';
 import inchesToPixels from '../../../helpers';
 
 var DimensionChooser = React.createClass({
@@ -42,3 +43,5 @@ var DimensionChooser = React.createClass({
     )
   }
 });
+
+export default DimensionChooser;

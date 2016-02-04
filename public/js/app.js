@@ -30573,6 +30573,10 @@ module.exports = warning;
 },{"_process":166}],326:[function(require,module,exports){
 'use strict';
 
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
 var _fixedDataTable = require('fixed-data-table');
 
 var _fixedDataTable2 = _interopRequireDefault(_fixedDataTable);
@@ -30591,8 +30595,14 @@ var DateCell = function DateCell(rowIndex, data, col) {
   );
 };
 
+exports.default = DateCell;
+
 },{"fixed-data-table":135}],327:[function(require,module,exports){
 'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
 
 var _fixedDataTable = require('fixed-data-table');
 
@@ -30606,8 +30616,14 @@ var ImageCell = function ImageCell(rowIndex, data, col) {
   });
 };
 
+exports.default = ImageCell;
+
 },{"fixed-data-table":135}],328:[function(require,module,exports){
 "use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
 
 var _fixedDataTable = require("fixed-data-table");
 
@@ -30631,18 +30647,22 @@ var LinkCell = function LinkCell(rowIndex, data, col) {
   );
 };
 
+exports.default = LinkCell;
+
 },{"fixed-data-table":135}],329:[function(require,module,exports){
 'use strict';
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
 
 var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
 var _fixedDataTable = require('fixed-data-table');
-
-var _fixedDataTable2 = _interopRequireDefault(_fixedDataTable);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -30674,7 +30694,7 @@ var TextCell = function (_React$Component) {
       var props = _objectWithoutProperties(_props, ['rowIndex', 'field', 'data']);
 
       return _react2.default.createElement(
-        _fixedDataTable2.default,
+        _fixedDataTable.Cell,
         props,
         data[rowIndex][field]
       );
@@ -30684,12 +30704,22 @@ var TextCell = function (_React$Component) {
   return TextCell;
 }(_react2.default.Component);
 
+exports.default = TextCell;
+
 },{"fixed-data-table":135,"react":324}],330:[function(require,module,exports){
 'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
 
 var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
+
+var _config = require('../../../config.js');
+
+var _config2 = _interopRequireDefault(_config);
 
 var _helpers = require('../../../helpers');
 
@@ -30715,7 +30745,7 @@ var DimensionChooser = _react2.default.createClass({
 
     var choices = [];
 
-    AVAILABLE_DIMENSIONS.forEach(function (dim) {
+    _config2.default.forEach(function (dim) {
       var clickHandler = _this.changeDimension;
       choices.push(_react2.default.createElement(
         'li',
@@ -30765,7 +30795,9 @@ var DimensionChooser = _react2.default.createClass({
   }
 });
 
-},{"../../../helpers":336,"react":324}],331:[function(require,module,exports){
+exports.default = DimensionChooser;
+
+},{"../../../config.js":335,"../../../helpers":336,"react":324}],331:[function(require,module,exports){
 'use strict';
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
@@ -30971,8 +31003,6 @@ var Roster = _react2.default.createClass({
   }
 });
 
-// import RosterPhoto from './RosterPhoto.jsx';
-
 exports.default = Roster;
 
 },{"../DataTable/TextCell.jsx":329,"fixed-data-table":135,"react":324,"react-avatar-editor":167}],333:[function(require,module,exports){
@@ -31088,9 +31118,14 @@ exports.default = AVAILABLE_DIMENSIONS;
 },{}],336:[function(require,module,exports){
 "use strict";
 
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
 function inchesToPixels(inches) {
   return inches * 300; // 300 DPI
 }
+
+exports.inchesToPixels = inchesToPixels;
 
 },{}],337:[function(require,module,exports){
 'use strict';
@@ -31107,6 +31142,10 @@ var _Roster = require('./app/components/Roster/Roster.jsx');
 
 var _Roster2 = _interopRequireDefault(_Roster);
 
+var _DimensionChooser = require('./app/components/Dimensions/DimensionChooser.jsx');
+
+var _DimensionChooser2 = _interopRequireDefault(_DimensionChooser);
+
 var _credentials = require('./app/data/credentials');
 
 var _credentials2 = _interopRequireDefault(_credentials);
@@ -31114,8 +31153,8 @@ var _credentials2 = _interopRequireDefault(_credentials);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 _reactDom2.default.render(_react2.default.createElement(_Roster2.default, { tableData: _credentials2.default.roster }), document.getElementById('credentials-app-roster'));
-_reactDom2.default.render(_react2.default.createElement(DimensionChooser, null), document.getElementById('dimension-chooser'));
+_reactDom2.default.render(_react2.default.createElement(_DimensionChooser2.default, null), document.getElementById('dimension-chooser'));
 
-},{"./app/components/Roster/Roster.jsx":332,"./app/data/credentials":334,"react":324,"react-dom":178}]},{},[337,336,335,326,327,328,329,330,331,332,333,334]);
+},{"./app/components/Dimensions/DimensionChooser.jsx":330,"./app/components/Roster/Roster.jsx":332,"./app/data/credentials":334,"react":324,"react-dom":178}]},{},[337,336,335,326,327,328,329,330,331,332,333,334]);
 
 //# sourceMappingURL=app.js.map

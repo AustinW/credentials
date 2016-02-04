@@ -2,7 +2,6 @@ import React from 'react';
 import {Table, Column, Cell} from 'fixed-data-table';
 import AvatarEditor from 'react-avatar-editor';
 
-// import RosterPhoto from './RosterPhoto.jsx';
 import TextCell from '../DataTable/TextCell.jsx';
 
 var Roster = React.createClass({

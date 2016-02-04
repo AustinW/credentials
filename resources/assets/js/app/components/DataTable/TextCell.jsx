@@ -1,5 +1,5 @@
 import React from 'react';
-import Cell from 'fixed-data-table';
+import { Cell } from 'fixed-data-table';
 
 class TextCell extends React.Component {
   render() {
@@ -11,3 +11,5 @@ class TextCell extends React.Component {
     );
   }
 }
+
+export default TextCell;

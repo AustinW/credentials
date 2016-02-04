@@ -5,3 +5,5 @@ const DateCell = (rowIndex, data, col, ...props) => (
     {data.getObjectAt(rowIndex)[col].toLocaleString()}
   </Cell>
 );
+
+export default DateCell;

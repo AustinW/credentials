@@ -5,3 +5,5 @@ const ImageCell = (rowIndex, data, col, ...props) => (
     src={data.getObjectAt(rowIndex)[col]}
   />
 );
+
+export default ImageCell;
