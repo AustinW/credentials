@@ -30573,7 +30573,66 @@ module.exports = warning;
 },{"_process":166}],326:[function(require,module,exports){
 'use strict';
 
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+var _fixedDataTable = require('fixed-data-table');
+
+var _fixedDataTable2 = _interopRequireDefault(_fixedDataTable);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var DateCell = function DateCell(rowIndex, data, col) {
+  for (var _len = arguments.length, props = Array(_len > 3 ? _len - 3 : 0), _key = 3; _key < _len; _key++) {
+    props[_key - 3] = arguments[_key];
+  }
+
+  return React.createElement(
+    _fixedDataTable2.default,
+    props,
+    data.getObjectAt(rowIndex)[col].toLocaleString()
+  );
+};
+
+},{"fixed-data-table":135}],327:[function(require,module,exports){
+'use strict';
+
+var _fixedDataTable = require('fixed-data-table');
+
+var _fixedDataTable2 = _interopRequireDefault(_fixedDataTable);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var ImageCell = function ImageCell(rowIndex, data, col) {
+  return React.createElement(ExampleImage, {
+    src: data.getObjectAt(rowIndex)[col]
+  });
+};
+
+},{"fixed-data-table":135}],328:[function(require,module,exports){
+"use strict";
+
+var _fixedDataTable = require("fixed-data-table");
+
+var _fixedDataTable2 = _interopRequireDefault(_fixedDataTable);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var LinkCell = function LinkCell(rowIndex, data, col) {
+  for (var _len = arguments.length, props = Array(_len > 3 ? _len - 3 : 0), _key = 3; _key < _len; _key++) {
+    props[_key - 3] = arguments[_key];
+  }
+
+  return React.createElement(
+    _fixedDataTable2.default,
+    props,
+    React.createElement(
+      "a",
+      { href: "#" },
+      data.getObjectAt(rowIndex)[col]
+    )
+  );
+};
+
+},{"fixed-data-table":135}],329:[function(require,module,exports){
+'use strict';
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
@@ -30581,19 +30640,9 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactDom = require('react-dom');
-
-var _reactDom2 = _interopRequireDefault(_reactDom);
-
-var _reactAvatarEditor = require('react-avatar-editor');
-
-var _reactAvatarEditor2 = _interopRequireDefault(_reactAvatarEditor);
-
 var _fixedDataTable = require('fixed-data-table');
 
-var _Modal = require('react-bootstrap/lib/Modal');
-
-var _Modal2 = _interopRequireDefault(_Modal);
+var _fixedDataTable2 = _interopRequireDefault(_fixedDataTable);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -30604,46 +30653,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-var Dropzone = require('react-dropzone-es6');
-
-function inchesToPixels(inches) {
-  return inches * 300; // 300 DPI
-}
-
-var DateCell = function DateCell(rowIndex, data, col) {
-  for (var _len = arguments.length, props = Array(_len > 3 ? _len - 3 : 0), _key = 3; _key < _len; _key++) {
-    props[_key - 3] = arguments[_key];
-  }
-
-  return _react2.default.createElement(
-    _fixedDataTable.Cell,
-    props,
-    data.getObjectAt(rowIndex)[col].toLocaleString()
-  );
-};
-
-var ImageCell = function ImageCell(rowIndex, data, col) {
-  return _react2.default.createElement(ExampleImage, {
-    src: data.getObjectAt(rowIndex)[col]
-  });
-};
-
-var LinkCell = function LinkCell(rowIndex, data, col) {
-  for (var _len2 = arguments.length, props = Array(_len2 > 3 ? _len2 - 3 : 0), _key2 = 3; _key2 < _len2; _key2++) {
-    props[_key2 - 3] = arguments[_key2];
-  }
-
-  return _react2.default.createElement(
-    _fixedDataTable.Cell,
-    props,
-    _react2.default.createElement(
-      'a',
-      { href: '#' },
-      data.getObjectAt(rowIndex)[col]
-    )
-  );
-};
 
 var TextCell = function (_React$Component) {
   _inherits(TextCell, _React$Component);
@@ -30665,7 +30674,7 @@ var TextCell = function (_React$Component) {
       var props = _objectWithoutProperties(_props, ['rowIndex', 'field', 'data']);
 
       return _react2.default.createElement(
-        _fixedDataTable.Cell,
+        _fixedDataTable2.default,
         props,
         data[rowIndex][field]
       );
@@ -30675,56 +30684,105 @@ var TextCell = function (_React$Component) {
   return TextCell;
 }(_react2.default.Component);
 
-var CREDENTIALS = {
-  dimensions: {
-    width: 0,
-    height: 0,
-    ref: null
-  },
-  roster: [{ firstName: "Austin", lastName: "White", role: "Coach", img: null, team: "World Elite" }, { firstName: "Logan", lastName: "Dooley", role: "Athlete", img: null, team: "World Elite" }],
-  eventInfo: {
-    title: "",
-    location: "",
-    date: "",
-    logo: null
-  },
-  zones: {
-    available: []
+},{"fixed-data-table":135,"react":324}],330:[function(require,module,exports){
+'use strict';
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+var _helpers = require('../../../helpers');
+
+var _helpers2 = _interopRequireDefault(_helpers);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var DimensionChooser = _react2.default.createClass({
+  displayName: 'DimensionChooser',
+
+  changeDimension: function changeDimension(dimension) {
+    console.log('DIMENSION: ', dimension);
+
+    CREDENTIALS.dimensions.width = (0, _helpers2.default)(dimension.width);
+    CREDENTIALS.dimensions.height = (0, _helpers2.default)(dimension.height);
+    CREDENTIALS.dimensions.ref = dimension;
+
+    console.log('CREDENTIALS: ', CREDENTIALS);
   },
 
-  background: {
-    color: '#fff',
-    img: null
-  },
+  render: function render() {
+    var _this = this;
 
-  positioning: {
-    roster: {},
-    eventInfo: {
-      title: { x: 0, y: 0 },
-      location: { x: 0, y: 0 },
-      date: { x: 0, y: 0 },
-      logo: { x: 0, y: 0 }
-    },
-    zones: [{ x: 0, y: 0 }, { x: 0, y: 0 }, { x: 0, y: 0 }, { x: 0, y: 0 } // ....
-    ]
+    var choices = [];
+
+    AVAILABLE_DIMENSIONS.forEach(function (dim) {
+      var clickHandler = _this.changeDimension;
+      choices.push(_react2.default.createElement(
+        'li',
+        { key: dim.key },
+        _react2.default.createElement(
+          'div',
+          { className: 'thumbnail' },
+          _react2.default.createElement('img', { src: dim.previewSrc }),
+          _react2.default.createElement(
+            'div',
+            { className: 'caption' },
+            _react2.default.createElement(
+              'h3',
+              null,
+              dim.size
+            ),
+            _react2.default.createElement(
+              'p',
+              null,
+              dim.paperSize
+            ),
+            _react2.default.createElement(
+              'p',
+              null,
+              _react2.default.createElement(
+                'button',
+                { className: 'btn btn-primary', onClick: function onClick() {
+                    _this.changeDimension(dim);
+                  } },
+                'Choose'
+              )
+            )
+          )
+        )
+      ));
+    });
+
+    return _react2.default.createElement(
+      'div',
+      null,
+      _react2.default.createElement(
+        'ul',
+        { className: 'list-inline' },
+        choices
+      )
+    );
   }
-};
+});
 
-var AVAILABLE_DIMENSIONS = [{
-  key: '2x2',
-  previewSrc: 'https://www.perforatedpaper.com/images/products/thumbs/301_sml-01.png',
-  size: '2 cols x 2 rows',
-  paperSize: '8.5" x 11"',
-  width: 4.25,
-  height: 5.5
-}, {
-  key: '2x3',
-  previewSrc: 'https://www.perforatedpaper.com/images/products/thumbs/303_sml-01.png',
-  size: '2 cols x 3 rows',
-  paperSize: '8.5" x 11"',
-  width: 4.25,
-  height: 3.67
-}];
+},{"../../../helpers":336,"react":324}],331:[function(require,module,exports){
+'use strict';
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+var _Modal = require('react-bootstrap/lib/Modal');
+
+var _Modal2 = _interopRequireDefault(_Modal);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var MyLargeModal = _react2.default.createClass({
   displayName: 'MyLargeModal',
@@ -30808,113 +30866,40 @@ var MyLargeModal = _react2.default.createClass({
   }
 });
 
-var DimensionChooser = _react2.default.createClass({
-  displayName: 'DimensionChooser',
+exports.default = MyLargeModal;
 
-  changeDimension: function changeDimension(dimension) {
-    console.log('DIMENSION: ', dimension);
+},{"react":324,"react-bootstrap/lib/Modal":169}],332:[function(require,module,exports){
+'use strict';
 
-    CREDENTIALS.dimensions.width = inchesToPixels(dimension.width);
-    CREDENTIALS.dimensions.height = inchesToPixels(dimension.height);
-    CREDENTIALS.dimensions.ref = dimension;
-
-    console.log('CREDENTIALS: ', CREDENTIALS);
-  },
-
-  render: function render() {
-    var _this2 = this;
-
-    var choices = [];
-
-    AVAILABLE_DIMENSIONS.forEach(function (dim) {
-      var clickHandler = _this2.changeDimension;
-      choices.push(_react2.default.createElement(
-        'li',
-        { key: dim.key },
-        _react2.default.createElement(
-          'div',
-          { className: 'thumbnail' },
-          _react2.default.createElement('img', { src: dim.previewSrc }),
-          _react2.default.createElement(
-            'div',
-            { className: 'caption' },
-            _react2.default.createElement(
-              'h3',
-              null,
-              dim.size
-            ),
-            _react2.default.createElement(
-              'p',
-              null,
-              dim.paperSize
-            ),
-            _react2.default.createElement(
-              'p',
-              null,
-              _react2.default.createElement(
-                'button',
-                { className: 'btn btn-primary', onClick: function onClick() {
-                    _this2.changeDimension(dim);
-                  } },
-                'Choose'
-              )
-            )
-          )
-        )
-      ));
-    });
-
-    return _react2.default.createElement(
-      'div',
-      null,
-      _react2.default.createElement(
-        'ul',
-        { className: 'list-inline' },
-        choices
-      )
-    );
-  }
+Object.defineProperty(exports, "__esModule", {
+  value: true
 });
 
-var RosterPhoto = _react2.default.createClass({
-  displayName: 'RosterPhoto',
+var _react = require('react');
 
-  onDrop: function onDrop(files) {
-    console.log('Received files: ', files);
-  },
+var _react2 = _interopRequireDefault(_react);
 
-  render: function render() {
-    return _react2.default.createElement(
-      'div',
-      null,
-      _react2.default.createElement(
-        Dropzone,
-        { onDrop: this.onDrop },
-        _react2.default.createElement(
-          'div',
-          null,
-          'Try dropping some files here, or click to select files to upload.'
-        )
-      )
-    );
-  }
-});
+var _fixedDataTable = require('fixed-data-table');
+
+var _reactAvatarEditor = require('react-avatar-editor');
+
+var _reactAvatarEditor2 = _interopRequireDefault(_reactAvatarEditor);
+
+var _TextCell = require('../DataTable/TextCell.jsx');
+
+var _TextCell2 = _interopRequireDefault(_TextCell);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var Roster = _react2.default.createClass({
   displayName: 'Roster',
-
-  getInitialState: function getInitialState() {
-    return {
-      roster: CREDENTIALS.roster
-    };
-  },
 
   onClickSave: function onClickSave() {
     console.log('IMAGE: ', this.refs.editor.getImage());
   },
 
   render: function render() {
-    // var {roster} =
+    console.warn(this.props);
     return _react2.default.createElement(
       'div',
       null,
@@ -30922,7 +30907,7 @@ var Roster = _react2.default.createClass({
         _fixedDataTable.Table,
         {
           rowHeight: 60,
-          rowsCount: this.state.roster.length,
+          rowsCount: this.props.tableData.length,
           headerHeight: 50,
           width: 700,
           height: 500 },
@@ -30951,7 +30936,7 @@ var Roster = _react2.default.createClass({
             null,
             'First Name'
           ),
-          cell: _react2.default.createElement(TextCell, { data: this.state.roster, field: 'firstName' }),
+          cell: _react2.default.createElement(_TextCell2.default, { data: this.props.tableData, field: 'firstName' }),
           width: 150
         }),
         _react2.default.createElement(_fixedDataTable.Column, {
@@ -30960,7 +30945,7 @@ var Roster = _react2.default.createClass({
             null,
             'Last Name'
           ),
-          cell: _react2.default.createElement(TextCell, { data: this.state.roster, field: 'lastName' }),
+          cell: _react2.default.createElement(_TextCell2.default, { data: this.props.tableData, field: 'lastName' }),
           width: 150
         }),
         _react2.default.createElement(_fixedDataTable.Column, {
@@ -30969,7 +30954,7 @@ var Roster = _react2.default.createClass({
             null,
             'Role'
           ),
-          cell: _react2.default.createElement(TextCell, { data: this.state.roster, field: 'role' }),
+          cell: _react2.default.createElement(_TextCell2.default, { data: this.props.tableData, field: 'role' }),
           width: 150
         }),
         _react2.default.createElement(_fixedDataTable.Column, {
@@ -30978,18 +30963,159 @@ var Roster = _react2.default.createClass({
             null,
             'Team'
           ),
-          cell: _react2.default.createElement(TextCell, { data: this.state.roster, field: 'team' }),
+          cell: _react2.default.createElement(_TextCell2.default, { data: this.props.tableData, field: 'team' }),
           width: 150
         })
-      ),
-      _react2.default.createElement(RosterPhoto, null)
+      )
     );
   }
 });
 
-_reactDom2.default.render(_react2.default.createElement(Roster, null), document.getElementById('credentials-app-roster'));
+// import RosterPhoto from './RosterPhoto.jsx';
+
+exports.default = Roster;
+
+},{"../DataTable/TextCell.jsx":329,"fixed-data-table":135,"react":324,"react-avatar-editor":167}],333:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactDropzoneEs = require('react-dropzone-es6');
+
+var _reactDropzoneEs2 = _interopRequireDefault(_reactDropzoneEs);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var RosterPhoto = _react2.default.createClass({
+  displayName: 'RosterPhoto',
+
+  onDrop: function onDrop(files) {
+    console.log('Received files: ', files);
+  },
+
+  render: function render() {
+    return _react2.default.createElement(
+      'div',
+      null,
+      _react2.default.createElement(
+        _reactDropzoneEs2.default,
+        { onDrop: this.onDrop },
+        _react2.default.createElement(
+          'div',
+          null,
+          'Try dropping some files here, or click to select files to upload.'
+        )
+      )
+    );
+  }
+});
+
+exports.default = RosterPhoto;
+
+},{"react":324,"react-dropzone-es6":179}],334:[function(require,module,exports){
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+var CREDENTIALS = {
+  dimensions: {
+    width: 0,
+    height: 0,
+    ref: null
+  },
+  roster: [{ firstName: "Austin", lastName: "White", role: "Coach", img: null, team: "World Elite" }, { firstName: "Logan", lastName: "Dooley", role: "Athlete", img: null, team: "World Elite" }],
+  eventInfo: {
+    title: "",
+    location: "",
+    date: "",
+    logo: null
+  },
+  zones: {
+    available: []
+  },
+
+  background: {
+    color: '#fff',
+    img: null
+  },
+
+  positioning: {
+    roster: {},
+    eventInfo: {
+      title: { x: 0, y: 0 },
+      location: { x: 0, y: 0 },
+      date: { x: 0, y: 0 },
+      logo: { x: 0, y: 0 }
+    },
+    zones: [{ x: 0, y: 0 }, { x: 0, y: 0 }, { x: 0, y: 0 }, { x: 0, y: 0 } // ....
+    ]
+  }
+};
+
+exports.default = CREDENTIALS;
+
+},{}],335:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+var AVAILABLE_DIMENSIONS = [{
+  key: '2x2',
+  previewSrc: 'https://www.perforatedpaper.com/images/products/thumbs/301_sml-01.png',
+  size: '2 cols x 2 rows',
+  paperSize: '8.5" x 11"',
+  width: 4.25,
+  height: 5.5
+}, {
+  key: '2x3',
+  previewSrc: 'https://www.perforatedpaper.com/images/products/thumbs/303_sml-01.png',
+  size: '2 cols x 3 rows',
+  paperSize: '8.5" x 11"',
+  width: 4.25,
+  height: 3.67
+}];
+
+exports.default = AVAILABLE_DIMENSIONS;
+
+},{}],336:[function(require,module,exports){
+"use strict";
+
+function inchesToPixels(inches) {
+  return inches * 300; // 300 DPI
+}
+
+},{}],337:[function(require,module,exports){
+'use strict';
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactDom = require('react-dom');
+
+var _reactDom2 = _interopRequireDefault(_reactDom);
+
+var _Roster = require('./app/components/Roster/Roster.jsx');
+
+var _Roster2 = _interopRequireDefault(_Roster);
+
+var _credentials = require('./app/data/credentials');
+
+var _credentials2 = _interopRequireDefault(_credentials);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+_reactDom2.default.render(_react2.default.createElement(_Roster2.default, { tableData: _credentials2.default.roster }), document.getElementById('credentials-app-roster'));
 _reactDom2.default.render(_react2.default.createElement(DimensionChooser, null), document.getElementById('dimension-chooser'));
 
-},{"fixed-data-table":135,"react":324,"react-avatar-editor":167,"react-bootstrap/lib/Modal":169,"react-dom":178,"react-dropzone-es6":179}]},{},[326]);
+},{"./app/components/Roster/Roster.jsx":332,"./app/data/credentials":334,"react":324,"react-dom":178}]},{},[337,336,335,326,327,328,329,330,331,332,333,334]);
 
 //# sourceMappingURL=app.js.map

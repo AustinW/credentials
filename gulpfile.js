@@ -33,6 +33,21 @@ require('laravel-elixir-livereload');
 elixir(function(mix) {
     mix.sass('app.scss');
     mix.copy('./node_modules/fixed-data-table/dist/fixed-data-table.css', 'public/css');
-    mix.browserify('app.js', 'public/js/app.js');
+    
+    mix.browserify([
+      'index.js',
+      'helpers.js',
+      'config.js',
+      'app/components/DataTable/DateCell.jsx',
+      'app/components/DataTable/ImageCell.jsx',
+      'app/components/DataTable/LinkCell.jsx',
+      'app/components/DataTable/TextCell.jsx',
+      'app/components/Dimensions/DimensionChooser.jsx',
+      'app/components/Modal/ImageResizerModal.jsx',
+      'app/components/Roster/Roster.jsx',
+      'app/components/Roster/RosterPhoto.jsx',
+      'app/data/credentials.js'
+    ], 'public/js/app.js');
+    
     mix.livereload();
 });
