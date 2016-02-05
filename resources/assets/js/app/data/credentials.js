@@ -5,8 +5,8 @@ var CREDENTIALS = {
     ref: null
   },
   roster: [
-    {firstName: "Austin", lastName: "White", role: "Coach", img: null, team: "World Elite"},
-    {firstName: "Logan", lastName: "Dooley", role: "Athlete", img: null, team: "World Elite"}
+    {id: 1, firstName: "Austin", lastName: "White", role: "Coach", img: null, team: "World Elite"},
+    {id: 2, firstName: "Logan", lastName: "Dooley", role: "Athlete", img: null, team: "World Elite"}
   ],
   eventInfo: {
     title: "",

@@ -1,8 +1,8 @@
 import React from 'react';
 import {Table, Column, Cell} from 'fixed-data-table';
-import AvatarEditor from 'react-avatar-editor';
 
 import TextCell from '../DataTable/TextCell.jsx';
+import RosterPhoto from './RosterPhoto.jsx';
 
 var Roster = React.createClass({
   
@@ -22,17 +22,11 @@ var Roster = React.createClass({
           height={500}>
           <Column
             header={<Cell>Photo</Cell>}
-            cell={
-              <Cell>
-                <AvatarEditor
-                  image="http://placehold.it/50x50"
-                  width={50}
-                  height={50}
-                  border={0}
-                  color={[255,255,255,0.6]}
-                  scale={1.2} />
+            cell={({rowIndex, ...props}) => (
+              <Cell {...props}>
+                <RosterPhoto person={this.props.tableData[rowIndex]} />
               </Cell>
-            }
+            )}
             width={60}
           />
           <Column

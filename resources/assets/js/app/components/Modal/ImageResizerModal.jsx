@@ -1,24 +1,38 @@
 import React from 'react';
 import Modal from 'react-bootstrap/lib/Modal';
+import Button from 'react-bootstrap/lib/Button';
+import Cropper from 'react-cropper';
 
-const MyLargeModal = React.createClass({
+const ImageResizerModal = React.createClass({
   render() {
     return (
       <Modal {...this.props} bsSize="large" aria-labelledby="contained-modal-title-lg">
         <Modal.Header closeButton>
-          <Modal.Title id="contained-modal-title-lg">Modal heading</Modal.Title>
+          <Modal.Title id="contained-modal-title-lg">
+            {this.props.person.firstName} {this.props.person.lastName}
+          </Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <h4>Wrapped Text</h4>
-          <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
-          <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
-          <p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
-          <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
-          <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
-          <p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
-          <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
-          <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
-          <p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
+          <div className="container">
+            <div className="row">
+              <div className="col-md-12">
+                <h1>Upload photo:</h1>
+              </div>
+            </div>
+            <div className="row">
+              <div className="col-md-6">
+                <Cropper
+                  ref='cropper'
+                  src='http://fengyuanchen.github.io/cropper/img/picture.jpg'
+                  style={{height: 400, width: '100%'}}
+                  aspectRatio={16 / 9}
+                  guides={false}
+                  crop={this._crop} />
+              </div>
+            </div>
+          </div>
+          
+          
         </Modal.Body>
         <Modal.Footer>
           <Button onClick={this.props.onHide}>Close</Button>
@@ -28,4 +42,4 @@ const MyLargeModal = React.createClass({
   }
 });
 
-export default MyLargeModal;
+export default ImageResizerModal;
