@@ -26,6 +26,16 @@
       padding: 40px 15px;
       text-align: center;
     }
+    
+    .box{
+      display: inline-block;
+      padding: 10px;
+      box-sizing: border-box;
+    }
+    .img-preview{
+      overflow: hidden;
+      border:2px solid #555;
+    }
     </style>
     
   </head>
@@ -101,61 +111,10 @@
         </nav>
         
         <!--Main Content -->
-        <div class="col-xs-9">
-          <h1>Credential Maker</h1>
+        <div class="col-xs-9" id="root">
           
-          <section id="step-1" class="group">
-            <h3>Dimensions</h3>
-            <div id="step-1-sub1" class="subgroup">
-              <h4>Choose size:</h4>
-              <div class="row">
-                <div class="col-md-12" id="dimension-chooser">
-                  
-                </div>
-              </div>
-            </div>
-          </section>
           
-          <section id="step-2" class="group">
-            <h3>Roster</h3>
-            <div id="step-2-sub1" class="subgroup">
-              <h4>Upload your roster</h4>
-              <div id="credentials-app-roster-upload"></div>
-              <div id="credentials-app-roster"></div>
-            </div>
-          </section>
           
-          <section id="step-3" class="group">
-            <h3>Group C</h3>
-            <div id="step-3-sub1" class="subgroup">
-              <h4>Group C Sub 1</h4>
-            </div>
-            <div id="step-3-sub2" class="subgroup">
-              <h4>Group C Sub 2</h4>
-            </div>
-          </section>
-          
-              
-          <section id="step-4" class="group">
-            <h3>Group D</h3>
-            <div id="step-4-sub1" class="subgroup">
-              <h4>Group D Sub 1</h4>
-            </div>
-            <div id="step-4-sub2" class="subgroup">
-              <h4>Group D Sub 2</h4>
-            </div>
-          </section>
-          
-              
-          <section id="step-5" class="group">
-            <h3>Group E</h3>
-            <div id="step-5-sub1" class="subgroup">
-              <h4>Group E Sub 1</h4>
-            </div>
-            <div id="step-5-sub2" class="subgroup">
-              <h4>Group E Sub 2</h4>
-            </div>
-          </section>
           
               
         </div>

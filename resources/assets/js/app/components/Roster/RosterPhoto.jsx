@@ -4,14 +4,14 @@ import fsp from 'browserify-fs';
 import ImageResizerModal from '../Modal/ImageResizerModal.jsx';
 
 var RosterPhoto = React.createClass({
-  getInitialState: function() {
+  getInitialState() {
     return {
       imageData: '',
       mImageResizerShow: false
     };
   },
   
-  componentDidMount: function() {
+  componentDidMount() {
     this.imageRequest = fsp.readFile('test', 'utf-8', function(err, data) {
       if (data) {
         this.state.imageData = data;
@@ -21,22 +21,27 @@ var RosterPhoto = React.createClass({
     });
   },
   
-  getImage: function() {
+  mImageResizerClose() {
+    this.forceUpdate();
+    this.setState({mImageResizerShow: false});
+  },
+  
+  getImage() {
     
   },
   
-  handleClick: function(person) {
+  handleClick(person) {
      this.setState({ mImageResizerShow: true });
   },
   
-  render: function() {
+  render() {
     var imageElement,
         boundClick = this.handleClick.bind(this, this.props.person);
     
-    if (this.state.imageData) {
-      imageElement = (<img src="data:image/jpg;base64,{this.state.imageData}" onClick={boundClick} />)
+    if (this.props.person.img) {
+      imageElement = (<img src={this.props.person.img} onClick={boundClick} style={{width:32, height:32}} />)
     } else {
-      imageElement = (<i className="fa fa-user fa-2x" onClick={boundClick}mset></i>);
+      imageElement = (<i className="fa fa-user fa-2x" onClick={boundClick}></i>);
     }
     
     let mImageResizerClose = () => this.setState({ mImageResizerShow: false });

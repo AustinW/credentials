@@ -1,10 +1,15 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { render } from 'react-dom';
+import { Provider } from 'react-redux';
+import { createStore } from 'redux';
 
-import Roster from './app/components/Roster/Roster.jsx';
-import DimensionChooser from './app/components/Dimensions/DimensionChooser.jsx';
-import CREDENTIALS from './app/data/credentials';
+import App from './app/app.jsx';
 
+let store = createStore(function() {});
 
-ReactDOM.render(<Roster tableData={CREDENTIALS.roster} />, document.getElementById('credentials-app-roster'));
-ReactDOM.render(<DimensionChooser />, document.getElementById('dimension-chooser'));
+render(
+  <Provider store={store}>
+    <App />
+  </Provider>,
+  document.getElementById('root')
+);
